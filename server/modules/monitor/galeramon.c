@@ -289,6 +289,8 @@ monitorDatabase(MONITOR *mon, MONITOR_SERVERS *database)
     char *server_string;
     SERVER temp_server;
 
+    if (mon->user == NULL || mon->password == NULL) return;
+
     /* Don't even probe server flagged as in maintenance */
     if (SERVER_IN_MAINT(database->server))
         return;
